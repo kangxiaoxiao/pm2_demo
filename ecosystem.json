@@ -33,7 +33,7 @@
   		"path":"/www/pm2_ex",
       "ssh_options":"StrictHostKeyChecking=no",
   		//"post-deploy":" pm2 startOrRestart ecosystem.config.json --env production",
-        "pre-deploy-local": "echo 'Deploy Done!'",
+      //  "pre-deploy-local": "echo 'Deploy Done!'",
         "env": {
             "NODE_ENV": "production"
         }
