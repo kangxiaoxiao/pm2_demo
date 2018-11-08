@@ -6,4 +6,4 @@ http.createServer(function (request, response) {
      {'Content-Type': 'text/html'}
      );
     response.end(staticPage);
-}).listen(3000);  
+}).listen(3000);       
