@@ -2,22 +2,11 @@
   "apps" : [{
     "name"        : "worker",
     "script"      : "app.js",
-    "watch"       : true,
-    "ignore_watch" : [  // 从监控目录中排除
-	    "node_modules", 
-	    "logs",
-	    "public"
-    ],
-    "watch_options": {
-	    "followSymlinks": false
-	  },
-	  "error_file" : "./logs/app-err.log",  // 错误日志路径
-    "out_file"   : "./logs/app-out.log",  // 普通日志路径  
     "env": {
-      "COMMON_VARIABLE":"true"
+      "COMMON_VARIABLE": "true"
     },
-    "env_production" : {
-       "NODE_ENV": "production",
+     "env_production" : {
+      "NODE_ENV": "production"
     }
   },{
     "name"       : "api-app",
@@ -27,16 +16,16 @@
   	"production":{
   		"user":"root",
   		"host":["39.105.67.28"],
-    //  "port":"3000",
   		"ref":"origin/master",
   		"repo":"git@github.com:kangxiaoxiao/pm2_demo.git",
   		"path":"/www/pm2_ex",
-      "ssh_options":"StrictHostKeyChecking=no",
-  		"post-deploy":" pm2 startOrRestart ecosystem.json --env production",
-        "pre-deploy-local": "echo 'Deploy Done!'",
-        "env": {
-            "NODE_ENV": "production"
-        }
+      "ssh_options": "StrictHostKeyChecking=no",
+  		"post-deploy" : "pm2 startOrRestart ecosystem.json --env production",
+      "pre-deploy-local": "echo 'Deploy Done!'",
+      "pre-setup":"rm -rf /www/pm2_ex/source",
+      "env"  : {
+        "NODE_ENV": "production"
+      }
   	}
   }
 }
